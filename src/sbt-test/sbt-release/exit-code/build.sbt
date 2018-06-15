@@ -26,5 +26,12 @@ TaskKey[Unit]("checkExitCodes") := {
 
   checkExitCode("""Seq(releaseStepCommand("show version"))""")(0)
 
+  checkExitCode("""Seq(releaseStepCommand("test"))""")(1)
+
   checkExitCode("""Seq(sbtrelease.ReleaseStateTransformations.runTest, releaseStepCommand("show version"))""")(1)
+
+  checkExitCode("""Seq(releaseStepCommandAndRemaining("show version"))""")(0)
+
+  checkExitCode("""Seq(releaseStepCommandAndRemaining("test"))""")(1)
+
 }
